@@ -37,6 +37,12 @@ jobs:
 
     - name: Terraform Format
       run: terraform fmt -check
+    
+    - name: Decrypt terraform.tfvars
+      env:
+        GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+      run: |
+        echo "$GPG_PASSPHRASE" | gpg --batch --yes --decrypt --passphrase-fd 0 -o terraform.tfvars terraform.tfvars.gpg
 
     - name: Terraform Plan
       run: terraform plan -input='false'
