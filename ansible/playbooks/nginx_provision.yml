@@ -1,0 +1,10 @@
+- name: Deploy nginx to EKS
+  hosts: local
+  gather_facts: false
+
+  tasks:
+    - name: Apply nginx deployment from YAML
+      kubernetes.core.k8s:
+        kubeconfig: ~/.kube/config
+        state: present
+        definition: "{{ lookup('file', '../manifests/nginx-deployment.yaml') }}"
