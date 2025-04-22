@@ -19,7 +19,7 @@ module "rds" {
   source             = "./modules/rds"
   security_group_ids = [module.vpc.rds_sg_id]
   db_username        = "postgres"
-  db_password        = "789456123azaz"
+  db_password        = var.db_password
   db_subnet_ids      = module.vpc.db_subnet_ids
 }
 
