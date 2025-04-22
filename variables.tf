@@ -52,6 +52,12 @@ variable "db_availability_zone" {
   default     = "eu-west-2c"
 }
 
+variable "db_password" {
+  description = "Password for db user"
+  type        = string
+}
+
+
 variable "cluster_name" {
   description = "The name of the EKS cluster"
   type        = string
